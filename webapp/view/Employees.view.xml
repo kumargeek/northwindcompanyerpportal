@@ -1,0 +1,78 @@
+<mvc:View controllerName="northwinderpportal.controller.Employees"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <VBox>
+            <!-- Horizontal layout for filters -->
+            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom">
+                <!-- Employee ID -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Employees" />
+                    <ComboBox
+                        width="200px"
+                        items="{/Employees}">
+                        <core:Item key="{EmployeeID}" text="{EmployeeID}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- First Name -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="First Name" />
+                    <ComboBox
+                        width="150px"
+                        items="{/Employees}">
+                        <core:Item key="{FirstName}" text="{FirstName}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Last Name -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Last Name" />
+                    <ComboBox
+                        width="150px"
+                        items="{/Employees}">
+                        <core:Item key="{LastName}" text="{LastName}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Employee Title -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Title" />
+                    <ComboBox
+                        width="150px"
+                        items="{/Employees}">
+                        <core:Item key="{Title}" text="{Title}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Button -->
+                <Button
+                    text="Get Employees"
+                    press="GetAllTheEmployees"
+                    class="sapUiSmallMarginTop"
+                />
+            </HBox>
+
+            <!-- Product Table -->
+            <Table id="ProductTable" items="{/Employees}">
+                <columns>
+                    <Column><Text text="Product Name" /></Column>
+                    <Column><Text text="First Name" /></Column>
+                    <Column><Text text="Last Name" /></Column>
+                    <Column><Text text="Title" /></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{EmployeeID}" />
+                            <Text text="{FirstName}" />
+                            <Text text="{LastName}" />
+                            <Text text="{Title}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+    </Page>
+</mvc:View>

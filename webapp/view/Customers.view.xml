@@ -1,0 +1,66 @@
+<mvc:View controllerName="northwinderpportal.controller.Customers"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <VBox>
+            <!-- Horizontal layout for filters -->
+            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom">
+                <!-- Customer Name -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Name" />
+                    <ComboBox
+                        width="200px"
+                        items="{/Customers}">
+                        <core:Item key="{CompanyName}" text="{CompanyName}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Cusotmer ID -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Customer ID" />
+                    <ComboBox
+                        width="150px"
+                        items="{/Customers}">
+                        <core:Item key="{CustomerID}" text="{CustomerID}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Supplier -->
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="City" />
+                    <ComboBox
+                        width="150px"
+                        items="{/Customers}">
+                        <core:Item key="{City}" text="{City}" />
+                    </ComboBox>
+                </VBox>
+
+                <!-- Button -->
+                <Button
+                    text="Get Customer Details"
+                    press="GetAllTheCustomers"
+                    class="sapUiSmallMarginTop"
+                />
+            </HBox>
+
+            <!-- Customer Table -->
+            <Table id="ProductTable" items="{/Customers}">
+                <columns>
+                    <Column><Text text="Customer Name" /></Column>
+                    <Column><Text text="Customer ID" /></Column>
+                    <Column><Text text="City" /></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{CompanyName}" />
+                            <Text text="{CustomerID}" />
+                            <Text text="{City}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+    </Page>
+</mvc:View>

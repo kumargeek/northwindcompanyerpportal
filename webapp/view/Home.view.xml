@@ -1,0 +1,58 @@
+<mvc:View controllerName="northwinderpportal.controller.Home"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+  <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+    <Title level="H2" text="Northwind Company ERP Portal" class="sapUiMediumMarginBottom" textAlign="Center"/>
+
+    <!-- First row -->
+    <HBox justifyContent="Center" alignItems="Center" width="100%">
+      <GenericTile header="Products" headerAlignment="Center" frameType="OneByHalf" press="onTilePress" class="sapUiTinyMargin">
+        <customData>
+          <core:CustomData key="target" value="RouteProducts" />
+        </customData>
+        <TileContent footer="20" />
+      </GenericTile>
+
+      <GenericTile header="Customers" headerAlignment="Center" frameType="OneByHalf" press="onTilePress" class="sapUiTinyMargin">
+        <customData>
+          <core:CustomData key="target" value="RouteCustomers" />
+        </customData>
+        <TileContent footer="15" />
+      </GenericTile>
+
+      <GenericTile header="Employees" headerAlignment="Center" frameType="OneByHalf" press="onTilePress" class="sapUiTinyMargin">
+        <customData>
+          <core:CustomData key="target" value="RouteEmployees" />
+        </customData>
+        <TileContent footer="10" />
+      </GenericTile>
+    </HBox>
+
+    <!-- Second row -->
+    <HBox justifyContent="Center" alignItems="Center" width="100%" style="margin-top: 1rem;">
+      <GenericTile header="Orders" headerAlignment="Center" frameType="OneByHalf" press="onTilePress" class="sapUiTinyMargin">
+        <customData>
+          <core:CustomData key="target" value="RouteOrders" />
+        </customData>
+        <TileContent footer="100" />
+      </GenericTile>
+
+      <GenericTile header="Invoices" headerAlignment="Center" frameType="OneByHalf" press="onTilePress" class="sapUiTinyMargin">
+        <customData>
+          <core:CustomData key="target" value="RouteInvoices" />
+        </customData>
+        <TileContent footer="40" />
+      </GenericTile>
+
+      <GenericTile header="Suppliers" headerAlignment="Center" frameType="OneByHalf" press="onTilePress" class="sapUiTinyMargin">
+        <customData>
+          <core:CustomData key="target" value="RouteSuppliers" />
+        </customData>
+        <TileContent footer="10" />
+      </GenericTile>
+    </HBox>
+  </VBox>
+</mvc:View>

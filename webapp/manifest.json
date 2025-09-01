@@ -1,0 +1,128 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "northwinderpportal",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.5"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/northwind/northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.139.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "northwinderpportal.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "viewPath": "northwinderpportal.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true
+      },
+      "routes": [
+        { "pattern": "", "name": "RouteHome", "target": "TargetHome" },
+        { "pattern": "products", "name": "RouteProducts", "target": "TargetProducts" },
+        { "pattern": "customers", "name": "RouteCustomers", "target": "TargetCustomers" },
+        { "pattern": "employees", "name": "RouteEmployees", "target": "TargetEmployees" },
+        { "pattern": "orders", "name": "RouteOrders", "target": "TargetOrders" },
+        { "pattern": "invoices", "name": "RouteInvoices", "target": "TargetInvoices" },
+        { "pattern": "suppliers", "name": "RouteSuppliers", "target": "TargetSuppliers" }
+      ],
+      "targets": {
+        "TargetHome": {
+          "viewName": "Home",
+          "viewId": "Home"
+        },
+        "TargetProducts": {
+          "viewName": "Products",
+          "viewId": "Products"
+        },
+        "TargetCustomers": {
+          "viewName": "Customers",
+          "viewId": "Customers"
+        },
+        "TargetEmployees": {
+          "viewName": "Employees",
+          "viewId": "Employees"
+        },
+        "TargetOrders": {
+          "viewName": "Orders",
+          "viewId": "Orders"
+        },
+        "TargetInvoices": {
+          "viewName": "Invoices",
+          "viewId": "Invoices"
+        },
+        "TargetSuppliers": {
+          "viewName": "Suppliers",
+          "viewId": "Suppliers"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "rootView": {
+      "viewName": "northwinderpportal.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}
