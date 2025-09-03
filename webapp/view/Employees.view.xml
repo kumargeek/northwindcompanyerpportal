@@ -1,63 +1,61 @@
-<mvc:View controllerName="northwinderpportal.controller.Employees"
+<mvc:View
+    controllerName="northwinderpportal.controller.Employees"
+    displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <VBox>
-            <!-- Horizontal layout for filters -->
-            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom">
-                <!-- Employee ID -->
+>
+    <Page title="{i18n>title.employees}" class="sapUiContentPadding">
+        <VBox class="sapUiSmallMargin">
+
+            <!-- Filters -->
+            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom" wrap="true">
+
                 <VBox class="sapUiSmallMarginEnd">
-                    <Text text="Employees" />
-                    <ComboBox
-                        width="200px"
-                        items="{/Employees}">
+                    <Text text="Employee ID" />
+                    <ComboBox id="employeeIdFilter" width="150px" selectedKey="" items="{/Employees}">
                         <core:Item key="{EmployeeID}" text="{EmployeeID}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- First Name -->
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="First Name" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Employees}">
+                    <ComboBox id="firstNameFilter" width="150px" selectedKey="" items="{/Employees}">
                         <core:Item key="{FirstName}" text="{FirstName}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Last Name -->
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="Last Name" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Employees}">
+                    <ComboBox id="lastNameFilter" width="150px" selectedKey="" items="{/Employees}">
                         <core:Item key="{LastName}" text="{LastName}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Employee Title -->
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="Title" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Employees}">
+                    <ComboBox id="titleFilter" width="200px" selectedKey="" items="{/Employees}">
                         <core:Item key="{Title}" text="{Title}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Button -->
                 <Button
                     text="Get Employees"
-                    press="GetAllTheEmployees"
+                    press="onFilterEmployees"
+                    type="Emphasized"
                     class="sapUiSmallMarginTop"
                 />
             </HBox>
 
-            <!-- Product Table -->
-            <Table id="ProductTable" items="{/Employees}">
+            <!-- Employees Table -->
+            <Table id="EmployeeTable" items="{employees>/}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Employees List" level="H2" />
+                    </Toolbar>
+                </headerToolbar>
                 <columns>
-                    <Column><Text text="Product Name" /></Column>
+                    <Column><Text text="Employee ID" /></Column>
                     <Column><Text text="First Name" /></Column>
                     <Column><Text text="Last Name" /></Column>
                     <Column><Text text="Title" /></Column>
@@ -65,10 +63,10 @@
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{EmployeeID}" />
-                            <Text text="{FirstName}" />
-                            <Text text="{LastName}" />
-                            <Text text="{Title}" />
+                            <Text text="{employees>EmployeeID}" />
+                            <Text text="{employees>FirstName}" />
+                            <Text text="{employees>LastName}" />
+                            <Text text="{employees>Title}" />
                         </cells>
                     </ColumnListItem>
                 </items>

@@ -1,51 +1,52 @@
-<mvc:View controllerName="northwinderpportal.controller.Suppliers"
+<mvc:View
+    controllerName="northwinderpportal.controller.Suppliers"
+    displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <VBox>
-            <!-- Horizontal layout for filters -->
-            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom">
-                <!-- Supplier ID -->
+>
+    <Page title="{i18n>title.suppliers}" class="sapUiContentPadding">
+        <VBox class="sapUiSmallMargin">
+
+            <!-- Filters -->
+            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom" wrap="true">
+
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="Supplier ID" />
-                    <ComboBox
-                        width="200px"
-                        items="{/Suppliers}">
+                    <ComboBox id="supplierIdFilter" width="150px" selectedKey="" items="{/Suppliers}">
                         <core:Item key="{SupplierID}" text="{SupplierID}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Contact Name -->
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="Contact Name" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Suppliers}">
+                    <ComboBox id="contactNameFilter" width="150px" selectedKey="" items="{/Suppliers}">
                         <core:Item key="{ContactName}" text="{ContactName}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Company Name -->
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="Company Name" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Suppliers}">
+                    <ComboBox id="companyNameFilter" width="150px" selectedKey="" items="{/Suppliers}">
                         <core:Item key="{CompanyName}" text="{CompanyName}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Button -->
                 <Button
                     text="Get Suppliers"
-                    press="GetAllTheSuppliers"
+                    press="onFilterSuppliers"
+                    type="Emphasized"
                     class="sapUiSmallMarginTop"
                 />
             </HBox>
 
-            <!-- Product Table -->
-            <Table id="ProductTable" items="{/Suppliers}">
+            <!-- Suppliers Table -->
+            <Table id="SupplierTable" items="{suppliers>/}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Suppliers List" level="H2" />
+                    </Toolbar>
+                </headerToolbar>
                 <columns>
                     <Column><Text text="Supplier ID" /></Column>
                     <Column><Text text="Contact Name" /></Column>
@@ -54,9 +55,9 @@
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{SupplierID}" />
-                            <Text text="{ContactName}" />
-                            <Text text="{CompanyName}" />
+                            <Text text="{suppliers>SupplierID}" />
+                            <Text text="{suppliers>ContactName}" />
+                            <Text text="{suppliers>CompanyName}" />
                         </cells>
                     </ColumnListItem>
                 </items>

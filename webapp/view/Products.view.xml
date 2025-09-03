@@ -1,66 +1,84 @@
-<mvc:View controllerName="northwinderpportal.controller.Products"
+<mvc:View
+    controllerName="northwinderpportal.controller.Products"
+    displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <VBox>
-            <!-- Horizontal layout for filters -->
-            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom">
-                <!-- Product Name -->
+>
+    <Page title="Products">
+        <VBox class="sapUiSmallMargin">
+
+            <!-- Filters -->
+            <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMarginBottom" wrap="true" >
+
                 <VBox class="sapUiSmallMarginEnd">
-                    <Text text="Name" />
-                    <ComboBox
-                        width="200px"
-                        items="{/Products}">
-                        <core:Item key="{ProductID}" text="{ProductName}" />
+                    <Text text="Product ID" />
+                    <ComboBox id="productIdFilter" width="150px" selectedKey="" items="{/Products}">
+                        <core:Item key="{ProductID}" text="{ProductID}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Category -->
                 <VBox class="sapUiSmallMarginEnd">
-                    <Text text="Category" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Products}">
+                    <Text text="Product Name" />
+                    <ComboBox id="productNameFilter" width="150px" selectedKey="" items="{/Products}">
+                        <core:Item key="{ProductName}" text="{ProductName}" />
+                    </ComboBox>
+                </VBox>
+
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Category ID" />
+                    <ComboBox id="categoryFilter" width="150px" selectedKey="" items="{/Products}">
                         <core:Item key="{CategoryID}" text="{CategoryID}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Supplier -->
                 <VBox class="sapUiSmallMarginEnd">
-                    <Text text="Supplier" />
-                    <ComboBox
-                        width="150px"
-                        items="{/Products}">
-                        <core:Item key="{SupplierID}" text="{SupplierID}" />
+                    <Text text="Unit Price" />
+                    <ComboBox id="unitPriceFilter" width="150px" selectedKey="" items="{/Products}">
+                        <core:Item key="{UnitPrice}" text="{UnitPrice}" />
                     </ComboBox>
                 </VBox>
 
-                <!-- Button -->
-                <Button
-                    text="Get Products"
-                    press="GetAllTheProducts"
-                    class="sapUiSmallMarginTop"
-                />
+                <VBox class="sapUiSmallMarginEnd">
+                    <Text text="Units In Stock" />
+                    <ComboBox id="stockFilter" width="150px" selectedKey="" items="{/Products}">
+                        <core:Item key="{UnitsInStock}" text="{UnitsInStock}" />
+                    </ComboBox>
+                </VBox>
+
+                <Button text="Filter" press="onFilterProducts" type="Emphasized" />
+
             </HBox>
 
             <!-- Product Table -->
-            <Table id="ProductTable" items="{/Products}">
+            <Table id="ProductTable" items="{products>/}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Product List" level="H2" />
+                    </Toolbar>
+                </headerToolbar>
+
                 <columns>
+                    <Column><Text text="Product ID" /></Column>
                     <Column><Text text="Product Name" /></Column>
                     <Column><Text text="Category ID" /></Column>
-                    <Column><Text text="Supplier ID" /></Column>
+                    <Column><Text text="Unit Price" /></Column>
+                    <Column><Text text="Units In Stock" /></Column>
                 </columns>
+
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{ProductName}" />
-                            <Text text="{CategoryID}" />
-                            <Text text="{SupplierID}" />
+                            <Text text="{products>ProductID}" />
+                            <Text text="{products>ProductName}" />
+                            <Text text="{products>CategoryID}" />
+                            <Text text="{products>UnitPrice}" />
+                            <Text text="{products>UnitsInStock}" />
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
+
         </VBox>
     </Page>
 </mvc:View>

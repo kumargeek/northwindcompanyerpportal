@@ -1,2 +1,41 @@
-/* Enter your custom styles here */
+/* Apply to all GenericTile instances using custom class */
+.genericTile .sapMGT {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100% !important;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: beige !important; /* Ensure background is beige */
+  border: 1px solid rgb(16, 189, 232);
+  border-radius: 8px; /* Optional: rounded corners */
+}
 
+/* Ensure the inner VBox also centers content */
+.genericTile .sapMGT .sapMGTContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Title text (e.g. "Products") */
+.text-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+/* Count text (e.g. "120") */
+.text-count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.3rem;
+  color: #000;
+}
