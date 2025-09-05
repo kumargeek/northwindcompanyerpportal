@@ -64,6 +64,8 @@
                     <Column><Text text="Customer ID" /></Column>
                     <Column><Text text="City" /></Column>
                 </columns>
+
+                <!--Here routed items from the Customers is fetched-->
                 <items>
                     <ColumnListItem>
                         <cells>
