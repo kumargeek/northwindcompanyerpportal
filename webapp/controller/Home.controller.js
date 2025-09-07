@@ -15,7 +15,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"], (Co
 
       const oModel = this.getOwnerComponent().getModel();
 
-      // Fetch counts for entities and update model
+      // Fetches the counts for entities and update model
       this._fetchCount(oModel, "Products", "productsCount");
       this._fetchCount(oModel, "Customers", "customersCount");
       this._fetchCount(oModel, "Employees", "employeesCount");
