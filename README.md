@@ -29,7 +29,7 @@ An SAP Fiori application.
     npm start
 ```
 
-- It is also possible to run the application using mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
+- It is also possible to run the application using the mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
 
 ```
     npm run start-mock
